@@ -1,6 +1,5 @@
 package chapter_2.conditionallock;
 
-import org.apache.commons.lang3.RandomStringUtils;
 
 public class FileMock {
 
