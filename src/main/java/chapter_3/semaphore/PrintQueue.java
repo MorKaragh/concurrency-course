@@ -40,11 +40,18 @@ public class PrintQueue {
     }
 
     private int getPrinter() {
-        for (int i = 0; i < 3; i++) {
-            if (freePrinters[i]) {
-                return i;
+        lock.lock();
+        try {
+            for (int i = 0; i < 3; i++) {
+                if (freePrinters[i]) {
+                    freePrinters[i] = false;
+                    return i;
+                }
             }
+        } finally {
+            lock.unlock();
         }
+
         return -1;
     }
 }
